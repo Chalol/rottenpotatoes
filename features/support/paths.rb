@@ -25,8 +25,9 @@ module NavigationHelpers
       '/movies'
     when /^the Create New Movie page/
       '/movies/new'
-    when /^the Details page for "([^"]+)"$/
-      movies_path(Movie.find_by_title($1).id)
+    
+    #when /^the Details about Aladdin page/       
+     # movies_path($1)
     
     else
       begin

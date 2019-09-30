@@ -1,8 +1,8 @@
-Feature: User can edit movie
+#Feature: User can edit movie
   
-Scenario: Edit a movie 
-  When I go to the Details page for "Aladdin" 
-  When I follow "edit movie"
+#Scenario: Edit a movie 
+  #When I go to the Details about Aladdin page 
+  #When I follow "Edit info"
   #When I fill in "Title" with "flipped"
   #And I select "G" from "Rating"
   #And I press "Save Changes"

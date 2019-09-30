@@ -33,6 +33,7 @@ gem 'haml'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'openssl'
+gem 'themoviedb'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

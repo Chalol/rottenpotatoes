@@ -18,6 +18,7 @@ class MoviesController < ApplicationController
         flash[:notice] = "#{@movie.title} was successfully created."
         redirect_to movies_path
     end
+    
     def movie_params
       params.require(:movie).permit(:title, :rating, :description,
     :release_date)
@@ -38,6 +39,26 @@ class MoviesController < ApplicationController
       @movie = Movie.find(params[:id])
       @movie.destroy
       flash[:notice] = "Movie '#{@movie.title}' deleted."
+      redirect_to movies_path
+    end
+    
+    def search_tmdb
+      find = Tmdb::Search.new
+      find.resource('movie')
+      find.query("'#{params[:search_terms]}'")
+      found = find.fetch
+      
+      if found[0] == nil
+        flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb!!."
+      else
+        found.each do |each|
+          @movie = Movie.create!(title: each['title'], rating: '-',
+          description: each['overview'], release_date: each['release_date'])
+          
+          flash[:notice] = "'#{params[:search_terms]}' was found in TMDb!!."
+        end
+      end
+      #puts found[0]
       redirect_to movies_path
     end
 
